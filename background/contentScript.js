@@ -3,20 +3,32 @@ console.log("Hello from content script")
 function selectSize(sizeString){
 
     let sizeChart = document.getElementsByClassName("size-grid-button")
-    let buyBtn = document.getElementsByClassName("buying-tools-cta-button")[0]
+    
     console.log(sizeChart)
     for(let i = 0; i < sizeChart.length;i++){
         // console.log(sizeChart[i].innerText)
         let sizeText = sizeChart[i].innerText
+        console.log("Click click")
         if(sizeText.includes(sizeString)){
-            console.log("Click click")
             sizeChart[i].click()
+            let buyBtn = document.getElementsByClassName("buying-tools-cta-button")[0]
+            console.log(buyBtn)
+            console.log(buyBtn.click())
+            // buyBtn.click()
+            break;
         }
     }
-    console.log(buyBtn)
-    buyBtn.click()
+    // console.log(buyBtn)
+    
 }
-selectSize("M 4 / W 5.5")
+
+var loadfunction = window.onload;
+window.onload = function(event){
+    //enter here the action you want to do once loaded
+    selectSize("M 4.5 / W 6")
+    if(loadfunction) loadfunction(event);
+}
+
     
 
 
